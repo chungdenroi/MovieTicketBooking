@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="_layout">
+<head>
+    <meta charset="UTF-8">
+    <title>List Of Tickets</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+</head>
+<body>
+<div class="container-sm">
+    <div class="card-body" layout:fragment="content">
+        <h2 class="text-center text-primary">LIST OF TICKETS</h2>
+        <div>
+            <div style="float: left; width:40%">
+                <a th:href="'/ticket/add'"><button class="btn btn-success">Add</button> </a>
+            </div>
+            <div style="float: left;width: 60%; display: inline-flex;">
+                <form action="/ticket/search" method="get" style="display: inline-flex; margin-left: 58%">
+                    <input class="form-control" type="text" placeholder="Enter movie name..." name="movieName">
+                    <button type="submit" class="btn btn-dark">Search</button>
+                </form>
+            </div>
+        </div>
+        <table class="table border-bottom" >
+            <tr>
+                <th>Ticket ID</th>
+                <th>Movie</th>
+                <th>Time</th>
+                <th>Date</th>
+                <th>Seat</th>
+                <th>Price</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+            <tr th:each="ticket : ${ticketList}">
+                <td th:text="${ticket.ticketID}"></td>
+                <td th:text="${ticket.movie.movieName}"></td>
+                <td th:text="${ticket.time}"></td>
+                <td th:text="${ticket.date}"></td>
+                <td th:text="${ticket.seat}"></td>
+                <td th:text="${ticket.price}"></td>
+                <td th:text="${ticket.status}"></td>
+                <td style="display: inline-flex">
+                    <a th:href="'/ticket/edit/'+${ticket.ticketID}" th:if="${ticket.status}=='Empty'"><button class="btn btn-outline-dark">Edit</button> </a>
+                    <a th:href="'/ticket/delete/'+${ticket.ticketID}" th:if="${ticket.status}=='Empty'"><button class="btn btn-outline-dark" onclick="return confirm('Are you sure?')">Delete</button> </a>
+                    <form action="booking" method="post" th:if="${ticket.status}=='Empty'">
+                        <input type="hidden" th:value="${ticket.ticketID}" name="ticketID">
+                        <button type="submit" class="btn btn-outline-danger">Booking</button>
+                    </form>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,82 @@
+.sidebar{
+    float: left;
+    overflow: hidden;
+    width: 20%;
+    padding: 2%;
+}
+.sidebar ul li a{
+    text-decoration: none;
+    font-weight: bold;
+    color: white;
+}
+.sidebar ul li{
+    list-style-type: none;
+    background-color: #b02a37;
+    color: white;
+    padding: 4%;
+    margin: 4.2%;
+    text-align: center;
+}
+.time{
+    width: 10%;
+    background-color: #6c757d;
+    color: white;
+    text-align: center;
+    padding: 3%;
+    margin: 1%;
+}
+.seat{
+    float: left;
+    overflow: hidden;
+    width: fit-content;
+    box-shadow: 1px 1px 2px 3px #8888;
+    padding: 1%;
+    margin: 1%;
+    height: fit-content;
+    color: white;
+    font-weight: bold;
+}
+.time a{
+    text-decoration: none;
+    color: white;
+}
+a:hover{
+    color: white;
+}
+.content{
+    float: left;
+    width: 80%;
+    padding: 2%;
+    overflow: hidden;
+}
+.header ul li a{
+    text-decoration: none;
+    color: white;
+}
+.header ul li{
+    display: inline;
+    padding: 2%;
+    margin: 2%;
+    line-height: 80px;
+}
+.header ul li a:hover{
+    border-bottom: 4px solid #b02a37;
+}
+.header{
+    background-color: #1f1f1f;
+    height: fit-content;
+    text-align: center;
+    margin: 2% auto;
+}
+.statusnote{
+    height: fit-content;
+    overflow: hidden;
+    position: absolute;
+    top: 1%;
+    right: 44%;
+}
+.statusnote p{
+    float: left;
+    margin: unset;
+    padding: unset;
+}
